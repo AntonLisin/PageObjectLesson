@@ -1,9 +1,7 @@
-link = "http://selenium1py.pythonanywhere.com/"
-def go_to_login_page(browser):
-    login_link = browser.find_element_by_css_selector("#login_link")
-    login_link.click()
+from pages.main_page import MainPage
 
 def test_guest_can_go_to_login_page(browser):
-    browser.get(link)
-    go_to_login_page(browser)
+    page = MainPage(browser, "http://selenium1py.pythonanywhere.com/") # Задаем объект класса MainPage, передаем ему экземпляр драйвера и url
+    page.open()                                                        # Открываем страницу, используем метод open класса BasePage
+    page.go_to_login_page()                                            # Переходим на страницу логина используя метод класса MainPage
 
