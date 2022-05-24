@@ -15,9 +15,9 @@ class BasePage:
     def open(self):
         self.browser.get(self.url)
 
-    def is_element_present(self, how, what):  #создаем метод перехватывающий исключения, в нем предается два аргумента как искать и сам селектор
+    def is_element_present(self, how, what, timeout=4):  #создаем метод перехватывающий исключения, в нем предается два аргумента как искать и сам селектор
         try:
-            self.browser.find_element(how, what)
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how,what)))
         except NoSuchElementException:
             return False
         return True
@@ -55,6 +55,11 @@ class BasePage:
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), 'Login link is not present'
+
+    def go_to_basket(self,timeout=4):
+        # WebDriverWait(self.browser,timeout).until(EC.presence_of_element_located((*BasePageLocators.BASKET_LINK))).click()
+        self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
+
 
 
 
