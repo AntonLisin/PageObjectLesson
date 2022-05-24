@@ -21,6 +21,7 @@ def browser(request):
         Executable_Path = ChromeDriverManager()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
         browser = webdriver.Chrome(options=options, executable_path=Executable_Path.install())
+        browser.maximize_window()
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         fp = webdriver.FirefoxProfile()
