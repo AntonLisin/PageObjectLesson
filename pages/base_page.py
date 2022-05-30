@@ -5,6 +5,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
 from pages.locators import BasePageLocators
+from pages.locators import LoginPage
+import random
 
 class BasePage:
     def __init__(self, browser, url, timeout=10):
